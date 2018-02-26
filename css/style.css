@@ -1,0 +1,13 @@
+body {
+    background-image: url("../assets/site/mapblue.jpg");
+    background-size: cover;
+}
+
+.person {
+    display: inline-block;
+}
+
+.person img {
+    height: 50px;
+    width: 50px;
+}

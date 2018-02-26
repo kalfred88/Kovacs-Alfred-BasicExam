@@ -12,7 +12,10 @@ function getData(url, callbackFunc) {
 function successAjax(xhttp) {
     // itt a json content, benne a data változóban
     var userDatas = JSON.parse(xhttp.responseText);
-    console.log(userDatas);
+    var data = userDatas[2].data;
+    console.log(data);
+
+    createGrid(data);
     /*
       Pár sorral lejebb majd ezt olvashatod:
       IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ!
@@ -25,7 +28,29 @@ function successAjax(xhttp) {
 }
 
 // Írd be a json fileod nevét/útvonalát úgy, ahogy nálad van
-getData('/json/aJsonFileodNeve.json', successAjax);
+getData('/json/characters.json', successAjax);
 
 // Live servert használd mindig!!!!!
 /* IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ! */
+/*
+function sortBy(a, b) {
+    a.localeCompare(b);
+}
+
+function sortNames(datas){
+    datas.sort(sortBy);
+}*/
+
+
+
+function createGrid(datas) {
+    var con = document.querySelector('#container');
+
+    for (var i = 0; i < datas.length; i++) {
+        var div = document.createElement('div');
+        div.textContent = datas[i].name;
+        div.className = "person";
+        div.innerHTML = `<img src="${datas[i].portrait}" alt="${datas[i].name}">`;
+        con.appendChild(div);
+    }
+}
