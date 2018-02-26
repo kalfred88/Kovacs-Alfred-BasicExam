@@ -7,7 +7,10 @@ body {
     display: inline-block;
 }
 
-.person img {
-    height: 50px;
-    width: 50px;
+.person img:hover {
+    opacity: 0%;
+}
+
+footer {
+    float: right;
 }
