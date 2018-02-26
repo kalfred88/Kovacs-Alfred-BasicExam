@@ -1,0 +1,45 @@
+CREATE DATABASE got CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE characters(
+    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    dead bit,
+    name varchar(255) NOT NULL,
+    alias varchar(255),
+    portrait varchar(255) NOT NULL,
+    picture varchar(255) NOT NULL,
+    bio text,
+    organization varchar(255),
+    house varchar(255)
+)
+ENGINE = INNODB
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+1.
+SELECT COUNT (id) AS Size, house
+FROM `characters` 
+WHERE dead = 0
+AND organization LIKE ''
+GROUP BY house;
+
+2.
+SELECT *
+FROM `characters` 
+WHERE dead = 0
+AND bio LIKE '%hero%';
+
+3.
+SELECT *
+FROM `characters` 
+WHERE dead = 0
+AND organization LIKE 'nightwatch'
+AND house LIKE '';
+
+4.
+SELECT name AS 'Hero', alias AS 'Nick Name', house AS 'Big House'
+FROM `characters` 
+WHERE dead = 0
+AND house NOT LIKE 'Lannister'
+AND organization NOT LIKE 'royalguard'
+AND bio NOT LIKE '%Lannister%'
+AND bio NOT LIKE '%King\'s Landing%'
